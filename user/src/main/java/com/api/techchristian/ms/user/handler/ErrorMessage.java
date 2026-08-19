@@ -1,4 +1,4 @@
-package com.api.techchristian.ms.user.exception;
+package com.api.techchristian.ms.user.handler;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.servlet.http.HttpServletRequest;
@@ -8,12 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
-import javax.naming.Binding;
 import java.util.HashMap;
 import java.util.Map;
 
 @Getter
-// @ToString
+@ToString
 public class ErrorMessage {
     private String path;
     private String method;
