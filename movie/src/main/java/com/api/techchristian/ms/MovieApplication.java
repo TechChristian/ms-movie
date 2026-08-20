@@ -1,4 +1,4 @@
-package com.api.techchristian.ms.movie;
+package com.api.techchristian.ms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
