@@ -4,10 +4,13 @@ import com.api.techchristian.ms.database.model.MovieEntity;
 import com.api.techchristian.ms.database.repository.MovieRepository;
 import com.api.techchristian.ms.dto.MovieDto;
 import com.api.techchristian.ms.exception.MovieAlreadyExistsException;
+import com.api.techchristian.ms.exception.MoviesNotFoundException;
 import com.api.techchristian.ms.mapper.MovieMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -28,5 +31,16 @@ public class MovieService {
         var savedMovie = movieRepository.save(movieRequestToEntity);
 
         return MovieMapper.toResponse(savedMovie);
+    }
+
+    @Transactional(readOnly = true)
+    public List<MovieDto.response> getAllMovies(){
+        var allMovies = movieRepository.findAll();
+
+        if(allMovies.isEmpty()){
+            throw new MoviesNotFoundException("movies not found.");
+        }
+
+        return MovieMapper.toResponseList(allMovies);
     }
 }
