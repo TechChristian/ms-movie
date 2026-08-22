@@ -3,6 +3,8 @@ package com.api.techchristian.ms.mapper;
 import com.api.techchristian.ms.database.model.MovieEntity;
 import com.api.techchristian.ms.dto.MovieDto;
 
+import java.util.List;
+
 public class MovieMapper {
     public static MovieEntity toEntity (MovieDto.create movieCreateDto){
         return MovieEntity.builder()
@@ -20,6 +22,12 @@ public class MovieMapper {
                 movieEntity.getGenre(),
                 movieEntity.getReleaseYear()
         );
+    }
+    public static List<MovieDto.response> toResponseList(List<MovieEntity> movieEntityList){
+        return movieEntityList
+                .stream()
+                .map(MovieMapper::toResponse)
+                .toList();
     }
 
 }
