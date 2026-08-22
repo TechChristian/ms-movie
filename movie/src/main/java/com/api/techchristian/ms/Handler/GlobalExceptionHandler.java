@@ -1,6 +1,7 @@
 package com.api.techchristian.ms.Handler;
 
 import com.api.techchristian.ms.exception.MovieAlreadyExistsException;
+import com.api.techchristian.ms.exception.MoviesNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -30,5 +31,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(new ErrorMessage(request, HttpStatus.BAD_REQUEST, "genre not readable"));
+    }
+
+    @ExceptionHandler(MoviesNotFoundException.class)
+    public ResponseEntity<ErrorMessage> moviesNotFoundException (MoviesNotFoundException ex, HttpServletRequest request){
+        log.error(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(new ErrorMessage(request, HttpStatus.NOT_FOUND, ex.getMessage()));
     }
 }
