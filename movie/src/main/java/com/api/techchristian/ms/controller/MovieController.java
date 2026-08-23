@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("v1/api/movies")
@@ -32,5 +33,14 @@ public class MovieController {
         log.info("All movies found : {}", responseMovies);
 
         return ResponseEntity.status(HttpStatus.OK).body(responseMovies);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteMovie(@PathVariable UUID id) {
+        movieService.deleteMovie(id);
+        log.info("Movie deleted : {}", id);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
     }
 }
