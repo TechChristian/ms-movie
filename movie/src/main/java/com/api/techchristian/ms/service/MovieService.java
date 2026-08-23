@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -42,5 +43,17 @@ public class MovieService {
         }
 
         return MovieMapper.toResponseList(allMovies);
+    }
+
+    @Transactional
+    public void deleteMovie(UUID movieId) {
+
+        MovieEntity movie = movieRepository.findById(movieId)
+                .orElseThrow(() -> new MoviesNotFoundException(
+                        "The Movie does not exist: " + movieId
+                ));
+
+        movieRepository.delete(movie);
+
     }
 }
