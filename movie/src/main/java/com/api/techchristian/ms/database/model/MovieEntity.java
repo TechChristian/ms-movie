@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -31,6 +32,9 @@ public class MovieEntity implements Serializable {
 
     @Column(nullable = false)
     private int releaseYear;
+
+    @Column(nullable = false)
+    private LocalDateTime sessionTime;
 
     private LocalDate createdAt;
 
