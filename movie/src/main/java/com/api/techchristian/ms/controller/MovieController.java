@@ -35,6 +35,13 @@ public class MovieController {
         return ResponseEntity.status(HttpStatus.OK).body(responseMovies);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<MovieDto.response> getMovie(@PathVariable UUID id) {
+        MovieDto.response responseMovie = movieService.getMovie(id);
+        log.info("Movie found : {}", responseMovie);
+        return ResponseEntity.status(HttpStatus.OK).body(responseMovie);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMovie(@PathVariable UUID id) {
         movieService.deleteMovie(id);
