@@ -16,12 +16,20 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "DB_TICKET")
+@Table(name = "DB_TICKET",
+    uniqueConstraints = {
+        @UniqueConstraint(
+                name = "session_seat",
+                columnNames = {"movie_id", "seat"}
+        )
+})
 public class TicketEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID ticketId;
+    @Column(nullable = false)
     private UUID userId;
+    @Column(name = "movie_id", nullable = false)
     private UUID movieId;
     @Column(nullable = false)
     private int seat;
