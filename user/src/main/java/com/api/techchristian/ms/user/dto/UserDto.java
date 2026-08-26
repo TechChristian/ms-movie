@@ -3,6 +3,8 @@ package com.api.techchristian.ms.user.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.UUID;
+
 public class UserDto {
     public record create(
             @NotBlank(message = "name is required.")
@@ -12,6 +14,7 @@ public class UserDto {
             String email
     ){}
     public record response(
+            UUID userId,
             String name,
             String email
     ){}
