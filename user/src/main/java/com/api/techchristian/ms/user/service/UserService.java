@@ -4,10 +4,13 @@ import com.api.techchristian.ms.user.database.model.UserEntity;
 import com.api.techchristian.ms.user.database.repository.UserRepository;
 import com.api.techchristian.ms.user.dto.UserDto;
 import com.api.techchristian.ms.user.exception.EmailAlreadyExistsException;
+import com.api.techchristian.ms.user.exception.UserNotFoundException;
 import com.api.techchristian.ms.user.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +32,12 @@ public class UserService {
 
         // return entity persists in Database.
         return UserMapper.toResponse(savedUser);
+    }
+
+    @Transactional
+    public UserDto.response getUser(UUID userId){
+        UserEntity user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("user not found." + userId));
+        return UserMapper.toResponse(user);
     }
 }
