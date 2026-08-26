@@ -4,10 +4,7 @@ package com.api.techchristian.ms.ticket.database.model;
 
 import com.api.techchristian.ms.ticket.database.enums.TicketStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -23,6 +20,7 @@ import java.util.UUID;
                 columnNames = {"movie_id", "seat"}
         )
 })
+@Builder
 public class TicketEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
