@@ -1,4 +1,9 @@
 package com.api.techchristian.ms.ticket.dto;
 
-public record UserResponse() {
-}
+import java.util.UUID;
+
+public record UserResponse(
+        UUID userId,
+        String name,
+        String email
+) {}
