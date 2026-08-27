@@ -12,6 +12,7 @@ public class MovieMapper {
                 .description(movieCreateDto.description())
                 .genre(movieCreateDto.genre())
                 .sessionTime(movieCreateDto.sessionTime())
+                .price(movieCreateDto.price())
                 .releaseYear(movieCreateDto.releaseYear())
                 .build();
     }
@@ -22,6 +23,7 @@ public class MovieMapper {
                 movieEntity.getDescription(),
                 movieEntity.getGenre(),
                 movieEntity.getSessionTime(),
+                movieEntity.getPrice(),
                 movieEntity.getReleaseYear()
         );
     }

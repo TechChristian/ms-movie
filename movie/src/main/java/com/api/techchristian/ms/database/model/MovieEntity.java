@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -31,10 +32,13 @@ public class MovieEntity implements Serializable {
     private GenreEnum genre;
 
     @Column(nullable = false)
-    private int releaseYear;
+    private LocalDateTime sessionTime;
 
     @Column(nullable = false)
-    private LocalDateTime sessionTime;
+    private BigDecimal price;
+
+    @Column(nullable = false)
+    private int releaseYear;
 
     private LocalDate createdAt;
 

@@ -1,12 +1,10 @@
 package com.api.techchristian.ms.dto;
 
 import com.api.techchristian.ms.database.enums.GenreEnum;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -24,6 +22,9 @@ public class MovieDto {
             @NotNull(message = "session time is necessary.")
             LocalDateTime sessionTime,
 
+            @NotNull(message = "price is required.")
+            BigDecimal price,
+
             @NotNull(message = "the field release year is required.")
             int releaseYear
     ){}
@@ -33,6 +34,7 @@ public class MovieDto {
             String description,
             GenreEnum genre,
             LocalDateTime sessionTime,
+            BigDecimal price,
             int releaseYear
     ){}
 }
