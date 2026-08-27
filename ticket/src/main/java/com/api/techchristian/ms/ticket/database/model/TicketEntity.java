@@ -6,6 +6,7 @@ import com.api.techchristian.ms.ticket.database.enums.TicketStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
@@ -31,6 +32,8 @@ public class TicketEntity {
     private UUID movieId;
     @Column(nullable = false)
     private int seat;
+    @Column(nullable = false)
+    private BigDecimal price;
     @Column(nullable = false)
     private TicketStatus status;
 }
