@@ -18,6 +18,7 @@ public class TicketMapper {
                 ticketEntity.getUserId(),
                 ticketEntity.getMovieId(),
                 ticketEntity.getSeat(),
+                ticketEntity.getPrice(),
                 ticketEntity.getStatus()
         );
     }
