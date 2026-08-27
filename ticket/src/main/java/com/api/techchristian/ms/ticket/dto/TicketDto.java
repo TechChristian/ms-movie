@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 public class TicketDto {
@@ -24,6 +25,7 @@ public class TicketDto {
             UUID userId,
             UUID movieId,
             int seat,
+            BigDecimal price,
             TicketStatus status
     ) {
     }
