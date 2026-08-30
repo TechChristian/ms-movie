@@ -24,12 +24,14 @@ public class TicketService {
 
     @Transactional
     public TicketDto.Response addTicket(TicketDto.Create createTicket){
+        log.info("Creating ticket - movieId: {}, userId: {}, seat: {}",
+                createTicket.movieId(),
+                createTicket.userId(),
+                createTicket.seat());
 
         var movie = movieClient.getMovie(createTicket.movieId());
-        log.info("Creating ticket for movie: {}", movie);
 
         var user = userClient.getUser(createTicket.userId());
-        log.info("Creating ticket for user: {}", user);
 
         var ticket = TicketMapper.toEntity(createTicket);
 
