@@ -5,6 +5,7 @@ import com.api.techchristian.ms.ticket.client.UserClient;
 import com.api.techchristian.ms.ticket.database.enums.TicketStatus;
 import com.api.techchristian.ms.ticket.database.model.TicketEntity;
 import com.api.techchristian.ms.ticket.database.repository.TicketRepository;
+import com.api.techchristian.ms.ticket.dto.PaymentResponse;
 import com.api.techchristian.ms.ticket.dto.TicketDto;
 import com.api.techchristian.ms.ticket.mapper.TicketMapper;
 import com.api.techchristian.ms.ticket.producer.TicketProducer;
@@ -51,4 +52,14 @@ public class TicketService {
 
     }
 
+    @Transactional
+    public void updateStatusTicket(PaymentResponse paymentResponse) {
+
+        var ticket = ticketRepository.findById(paymentResponse.ticketId())
+                .orElseThrow(() -> new RuntimeException("ticket not found."));
+
+        ticket.setStatus(paymentResponse.status());
+
+        ticketRepository.save(ticket);
+    }
 }
