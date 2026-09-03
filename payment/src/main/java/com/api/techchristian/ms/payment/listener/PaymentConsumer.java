@@ -1,4 +1,4 @@
-package com.api.techchristian.ms.payment.consumer;
+package com.api.techchristian.ms.payment.listener;
 
 import com.api.techchristian.ms.payment.dto.PaymentDto;
 import com.api.techchristian.ms.payment.service.PaymentService;
