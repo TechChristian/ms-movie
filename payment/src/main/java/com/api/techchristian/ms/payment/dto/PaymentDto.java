@@ -1,4 +1,4 @@
-package com.api.techchristian.ms.dto;
+package com.api.techchristian.ms.payment.dto;
 
 import java.math.BigDecimal;
 import java.util.UUID;
