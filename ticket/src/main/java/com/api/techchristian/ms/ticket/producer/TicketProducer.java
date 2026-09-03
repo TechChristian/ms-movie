@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class TicketProducer {
     private final RabbitTemplate rabbitTemplate;
 
-    @Value(value = "${broker.queue.ticket.name}")
+    @Value(value = "${broker.queue.ticket.ticket-create}")
     private String ticketCreated;
 
     public void createPayment(TicketEntity ticketEntity) {
